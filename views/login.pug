@@ -1,0 +1,31 @@
+extends layout
+
+block content  
+  // CONTENT 
+  .card
+    .card-header
+      .card-header-title
+        h3=`${title}`
+    .card-content
+      form(action="/login" method="POST")
+        div(class="field")
+          label(for="email" class="label") Email
+          p(class="control has-icons-left has-icons-right")
+            input(class="input" type="email" name="email" placeholder="Email" required)
+            span(class="icon is-small is-left")
+              i(class="fas fa-envelope")
+            span(class="icon is-small is-right")
+              i(class="fas fa-check")
+        div(class="field")
+          label(for="password" class="label") Password
+          p(class="control has-icons-left has-icons-right")
+            input(class="input" type="password" name="password" placeholder="Password" required)
+            span(class="icon is-small is-left")
+              i(class="fas fa-lock")
+            span(class="icon is-small is-right")
+              i(class="fas fa-check")
+        button(class="button is-primary" type="submit") 
+          i(class="fas fa-sign-in-alt")  
+          span &nbsp;Login
+    .card-footer.is-right
+      a(href="#") Forgot Password

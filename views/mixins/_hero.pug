@@ -1,0 +1,44 @@
+mixin hero( user = {} )
+
+  // HERO START
+  section(class="hero is-dark")
+    div(class="container")
+      div(class="hero-head")
+        nav(class="navbar is-transparent")
+          div(class="navbar-brand")
+            a(class="navbar-item") 
+              img(src="/images/icons/doughnut.png")
+            div(class="navbar-burger")
+              span
+              span
+              span
+          div(class="navbar-menu")
+            div(class="navbar-start")
+              a(class="navbar-item" href="/") 
+                i(class="fas fa-home")
+                span &nbsp;Home
+              a(class="navbar-item" href="#")
+                i(class="fas fa-gift") 
+                span &nbsp;Services
+              a(class="navbar-item" href="#") 
+                i(class="fas fa-coffee")
+                span &nbsp;Blogs
+              a.navbar-item 
+                i(class="fas fa-envelope" href="/contact")
+                span &nbsp;Contact
+            .navbar-end 
+              .navbar-item 
+                .field.is-grouped
+                  .buttons.has-addons
+                    a(class="button is-primary button-loginModal" data-target="modal-login") 
+                      i(class="fas fa-sign-in-alt") 
+                      span &nbsp;Login                    
+                    a(class="button is-danger button-registerModal" data-target="modal-register") 
+                      i(class="fas fa-user-plus")
+                      span &nbsp;Register  
+      div(class="hero-body")   
+        div(class="container has-text-centered")
+          h1(class="title") Title
+          h3(class="subtitle") Subtitle
+      div(class="hero-foot")            
+      // HERO ENDS

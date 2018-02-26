@@ -1,0 +1,41 @@
+mixin loginModal( user = {} )
+
+  div(class="modal modal-login")
+    .modal-background
+    .modal-header
+    .modal-content
+      .card
+        .card-header
+          .card-header-title
+            h3 Login
+        .card-content
+          form(class="modal-login-form" action="/login-modal" type="POST")
+            div(class="field")
+              label(for="email" class="label") Email
+              p(class="control has-icons-left has-icons-right")
+                input(class="input" type="email" name="email" placeholder="Email" required)
+                span(class="icon is-small is-left")
+                  i(class="fas fa-envelope")
+                span(class="icon is-small is-right")
+                  i(class="fas fa-check")
+            div(class="field")
+              label(for="password" class="label") Password
+              p(class="control has-icons-left has-icons-right")
+                input(class="input" type="password" name="password" placeholder="Password" required)
+                span(class="icon is-small is-left")
+                  i(class="fas fa-lock")
+                span(class="icon is-small is-right")
+                  i(class="fas fa-check")
+          div(class="field is-grouped")
+            div(class="buttons is-right")
+              button(class="button modal-login-button is-primary" type="submit") 
+                i(class="fas fa-sign-in-alt")  
+                span &nbsp;Login                   
+              a(class="button is-danger modal-close-login") 
+                i(class="fas fa-times")
+                span &nbsp;Cancel  
+          div(class="message is-danger")        
+        .card-footer.is-right
+          a(href="#") Forgot Password
+    .modal-footer            
+    button(class="modal-close modal-close-login is-large" aria-label="close") 

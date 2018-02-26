@@ -1,0 +1,83 @@
+html
+  head
+    title= `${title} | ${h.siteName}`    
+    link(rel='stylesheet', href='/bulma/css/bulma.css')     
+    link(rel='stylesheet', href='/dist/style.css')  
+    link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body   
+    .header
+      block header 
+        // HERO START
+        section(class="hero is-dark")
+          div(class="container")
+            div(class="hero-head")
+              nav(class="navbar is-transparent")
+                div(class="navbar-brand")
+                  a(class="navbar-item") 
+                    img(src="/images/icons/doughnut.png")
+                  div(class="navbar-burger")
+                    span
+                    span
+                    span
+                div(class="navbar-menu")
+                  div(class="navbar-start")
+                    a(class="navbar-item" href="/") 
+                      i(class="fas fa-home")
+                      span &nbsp;Home
+                    a(class="navbar-item" href="#")
+                      i(class="fas fa-gift") 
+                      span &nbsp;Services
+                    a(class="navbar-item" href="#") 
+                      i(class="fas fa-coffee")
+                      span &nbsp;Blogs
+                    a.navbar-item 
+                      i(class="fas fa-envelope" href="/contact")
+                      span &nbsp;Contact
+                  if user    
+                    .navbar-end 
+                      .navbar-item 
+                        .field.is-grouped
+                          .buttons.has-addons
+                            a(class="button is-danger" href="/logout") 
+                              i(class="fas fa-sign-out-alt") 
+                              span &nbsp;Logout                   
+                            a(class="button is-primary" data-target="modal-profile") 
+                              i(class="fas fa-user-circle")
+                              span &nbsp;Profile
+                  else
+                    .navbar-end 
+                      .navbar-item 
+                        .field.is-grouped
+                          .buttons.has-addons
+                            a(class="button is-primary button-loginModal" data-target="modal-login") 
+                              i(class="fas fa-sign-in-alt") 
+                              span &nbsp;Login                    
+                            a(class="button is-danger button-registerModal" data-target="modal-register") 
+                              i(class="fas fa-user-plus")
+                              span &nbsp;Register 
+                      
+            div(class="hero-body")   
+              div(class="container has-text-centered")
+                h1(class="title") Title
+                h3(class="subtitle") Subtitle
+            div(class="hero-foot")            
+            // HERO ENDS     
+            
+            // MIXINS START 
+            include mixins/_loginModal
+            include mixins/_registerModal  
+            +loginModal(user)
+            +registerModal(user)  
+            // MIXINS ENDS 
+    .content      
+      block content                  
+    .scripts
+      block scripts
+        script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+        script(src="/dist/App.bundle.js")      
+        script(src="/js/jquery.min.js")
+        script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js")
+        
+    
+  
