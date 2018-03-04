@@ -1,4 +1,4 @@
-//import '../sass/style.scss';
+import '../sass/style.scss';
 //import { $, $$ } from './modules/bling';
 const $ = require('jquery');
 const validate = require('jquery-validation');

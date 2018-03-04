@@ -43,8 +43,12 @@ html
                               i(class="fas fa-sign-out-alt") 
                               span &nbsp;Logout                   
                             a(class="button is-primary" data-target="modal-profile") 
-                              i(class="fas fa-user-circle")
-                              span &nbsp;Profile
+                              if user.gravatar
+                                img(class="profile__image" src=`${user.gravatar}`)
+                                span &nbsp;Profile
+                              else
+                                i(class="fas fa-user-circle")
+                                span &nbsp;Profile
                   else
                     .navbar-end 
                       .navbar-item 

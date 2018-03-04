@@ -21,9 +21,10 @@ const userSchema = new mongoose.Schema ({
         validate: [validator.isEmail, 'Invalid Email Address'],
         required: 'Please supply an email address'
     },
+    handphone: Number,
+    phone: Number,
     address: {
-      hp: Number,
-      add: String,
+      address: String,
       postcode: Number,
       city: String,
       state: String,

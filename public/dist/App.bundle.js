@@ -11619,7 +11619,8 @@ module.exports = function (module) {
 "use strict";
 
 
-//import '../sass/style.scss';
+__webpack_require__(4);
+
 //import { $, $$ } from './modules/bling';
 var $ = __webpack_require__(0);
 var validate = __webpack_require__(1);
@@ -11759,6 +11760,12 @@ $(document).ready(function () {
   });
   // Login Modal Ends
 });
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

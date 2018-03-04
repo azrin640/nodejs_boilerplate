@@ -7,4 +7,7 @@ body {
 .card-footer {
   padding: 10px; }
 
+.profile__image {
+  border-radius: 100px; }
+
 /*# sourceMappingURL=style.css.map*/
