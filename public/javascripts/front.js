@@ -1,7 +1,15 @@
-import '../sass/style.scss';
+//import '../sass/style.scss';
 //import { $, $$ } from './modules/bling';
 const $ = require('jquery');
 const validate = require('jquery-validation');
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function(){
+      console.log('Service worker registered');
+    });
+}
 
 $(document).ready(function(){
   $(".navbar-burger").click(function(){
@@ -234,5 +242,4 @@ $(document).ready(function(){
     $(".modal-profile-address").removeClass("is-active");
   });
   // Profile Modal Address Ends
-
 });

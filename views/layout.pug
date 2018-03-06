@@ -4,7 +4,14 @@ html
     link(rel='stylesheet', href='/bulma/css/bulma.css')     
     link(rel='stylesheet', href='/dist/style.css')  
     link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+    link(rel="manifest" href="/pwa/manifest.json")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")  
+    meta(name="apple-mobile-web-app-title" content="Boilerplate")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_48x48.png" sizes="48x48")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_256x256.png" sizes="256x256")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_512x512.png" sizes="512x512")  
   body   
     .header
       block header 

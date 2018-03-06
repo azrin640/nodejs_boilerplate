@@ -1,0 +1,39 @@
+{
+  "name": "nodejs Boilerplate",
+  "short_name": "Boilerplate",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#666666",
+  "description": "A nodejs boilerplate",
+  "dir": "ltr",
+  "lang": "en-US",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/images/icons/b_48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/images/icons/b_64x64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+        "src": "/images/icons/b_144x144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+    },
+    {
+      "src": "/images/icons/b_256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/images/icons/b_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
