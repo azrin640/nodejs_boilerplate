@@ -1,0 +1,65 @@
+mixin profileModalAddress( user = {} )
+
+  div(class="modal modal-profile-address")
+    .modal-background
+    .modal-header
+    .modal-content
+      .card
+        .card-header
+          .card-header-title
+            h3 Address
+        .card-content
+          div(class="modal-message")
+          form(class="modal-profile-form" action="/register" method="POST")
+                              
+            // Name 
+            div(class="field")                
+                p(class="control has-icons-left has-icons-right")
+                  input(class="input" type="text" name="name" placeholder="Name" value=user && user.address required)
+                  span(class="icon is-small is-left")
+                    i(class="fas fa-user")
+                  span(class="icon is-small is-right")
+                    i(class="fas fa-check")
+                    
+            // Email
+            div(class="field")
+              p(class="control has-icons-left has-icons-right")
+                input(class="input" type="email" name="email" placeholder="Email" value=user && user.email required)
+                span(class="icon is-small is-left")
+                  i(class="fas fa-envelope")
+                span(class="icon is-small is-right")
+                  i(class="fas fa-check") 
+                  
+            // Handphone
+            div(class="field")
+              p(class="control has-icons-left has-icons-right")
+                input(class="input" type="number" name="mobile" placeholder="Mobile" value=user && user.mobile)
+                span(class="icon is-small is-left")
+                  i(class="fas fa-mobile")
+                span(class="icon is-small is-right")
+                  i(class="fas fa-check")
+                    
+            // Phone
+            div(class="field")
+              p(class="control has-icons-left has-icons-right")
+                input(class="input" type="number" name="phone" placeholder="Phone" value=user && user.mobile)
+                span(class="icon is-small is-left")
+                  i(class="fas fa-phone")
+                span(class="icon is-small is-right")
+                  i(class="fas fa-check")
+                  
+          // Buttons     
+          div(class="field is-grouped")
+            div(class="buttons is-right")
+              // Update Profile Button
+              a(class="button is-primary modal-profile-button" type="submit") 
+                i(class="fas fa-sign-in-alt") 
+                span &nbsp;Update Profile   
+              // Cancel Close Button               
+              a(class="button is-danger modal-close-address-profile") 
+                i(class="fas fa-times")
+                span &nbsp;Cancel
+          // Message 
+          div(class="message")
+    .modal-footer            
+    button(class="modal-close modal-close-address-profile is-large" aria-label="close") 

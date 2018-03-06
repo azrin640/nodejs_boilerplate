@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9993,7 +9993,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	return jQuery;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module)))
 
 /***/ }),
 /* 1 */
@@ -11584,6 +11584,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11613,13 +11619,13 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(4);
+__webpack_require__(2);
 
 //import { $, $$ } from './modules/bling';
 var $ = __webpack_require__(0);
@@ -11686,7 +11692,7 @@ $(document).ready(function () {
         },
         error: function error(xhr, status, _error) {
           //console.log(xhr.status);
-          //console.log(xhr.responseText);
+          console.log(xhr.responseText);
           var message = JSON.parse(xhr.responseText);
           $(".message").html('\n            <article class="message is-small is-danger">\n              <div class="message-body">\n                ' + message.message + '\n              </div>\n            </article>');
         }
@@ -11759,13 +11765,92 @@ $(document).ready(function () {
     };
   });
   // Login Modal Ends
+
+  // Profile Modal
+  $(".profile-dropdown-button").click(function () {
+    $(".dropdown").toggleClass("is-active");
+  });
+
+  $(".user-profile-link").click(function () {
+    $(".modal-profile").addClass("is-active");
+  });
+
+  $(".modal-profile-form").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 6
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      mobile: {
+        required: true,
+        minlength: 10
+      },
+      phone: {
+        required: true,
+        minlength: 10
+      }
+    },
+    errorClass: "is-danger",
+    validClass: "is-success"
+  });
+
+  $(".modal-profile-button").on('click', function (e) {
+    var validator = $(".modal-profile-form").validate();
+    if (validator) {
+      var formData = {
+        'name': $('input[name=profile-name]').val(),
+        'email': $('input[name=profile-email]').val(),
+        'mobile': $('input[name=profile-mobile]').val(),
+        'phone': $('input[name=profile-phone]').val()
+      };
+
+      console.log(formData);
+
+      $.ajax({
+        type: "POST",
+        url: "/profile/update",
+        data: formData,
+        dataType: 'json',
+        success: function success(result) {
+          $(".modal-message").html('Your profile has been updated');
+          $(".modal-profile-form").hide();
+          $(".modal-profile-button").hide();
+          $(".modal-close-profile-button").hide();
+        },
+        error: function error(xhr, status, _error3) {
+          // console.log(xhr.status);
+          //console.log(xhr.responseText);
+          //var message = JSON.parse(xhr.responseText);
+          var message = xhr.responseText;
+          console.log(message);
+          $(".message").html('\n            <article class="message is-small is-danger">\n              <div class="message-body">\n                ' + message.message + '\n              </div>\n            </article>');
+        }
+      });
+    } else {
+      $(".input").addClass("is-danger");
+    }
+    e.preventDefault();
+  });
+
+  $(".modal-close-profile").click(function () {
+    $(".modal-profile").removeClass("is-active");
+  });
+  // Profile Modal Ends
+
+  // Profile Modal Address
+  $(".user-profile-address-link").click(function () {
+    $(".modal-profile-address").addClass("is-active");
+  });
+
+  $(".modal-close-address-profile").click(function () {
+    $(".modal-profile-address").removeClass("is-active");
+  });
+  // Profile Modal Address Ends
 });
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

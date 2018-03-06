@@ -25,6 +25,13 @@ router.get('/login', userController.login);
 router.post('/login', authController.login);
 router.post('/login-modal', authController.loginModal);
 
+// Update profile
+router.post('/profile/update',
+  authController.isLoggedIn,
+  userController.validateUpdateProfile,
+  catchErrors(userController.updateProfile)
+);
+
 // Logout
 router.get('/logout', authController.logout);
 

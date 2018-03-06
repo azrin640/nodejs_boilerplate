@@ -8,25 +8,29 @@ mixin registerModal( user = {} )
         .card-header
           .card-header-title
             h3 Register
+        // Card Content
         .card-content
           div(class="modal-message")
           form(class="modal-register-form" action="/register" method="POST")
+            // Name
             div(class="field")
               label(for="name" class="label") Name
               p(class="control has-icons-left has-icons-right")
-                input(class="input" type="text" name="name" id="name" placeholder="Name" required)
+                input(class="input" type="text" name="name" placeholder="Name" required)
                 span(class="icon is-small is-left")
                   i(class="fas fa-user")
                 span(class="icon is-small is-right")
                   i(class="fas fa-check")
+            //Email
             div(class="field")
               label(for="email" class="label") Email
               p(class="control has-icons-left has-icons-right")
-                input(class="input" type="email" name="email" id="email" placeholder="Email" required)
+                input(class="input" type="email" name="email" placeholder="Email" required)
                 span(class="icon is-small is-left")
                   i(class="fas fa-envelope")
                 span(class="icon is-small is-right")
                   i(class="fas fa-check")
+            // Password
             div(class="field")
               label(for="password" class="label") Password
               p(class="control has-icons-left has-icons-right")
@@ -35,14 +39,16 @@ mixin registerModal( user = {} )
                   i(class="fas fa-lock")
                 span(class="icon is-small is-right")
                   i(class="fas fa-check")
+            // Password Repeat
             div(class="field")
               label(for="password" class="label") Repeat Password
               p(class="control has-icons-left has-icons-right")
-                input(class="input" type="password" name="password_repeat" id="password_repeat" placeholder="Repeat Password" required)
+                input(class="input" type="password" name="password_repeat" placeholder="Repeat Password" required)
                 span(class="icon is-small is-left")
                   i(class="fas fa-lock")
                 span(class="icon is-small is-right")
                   i(class="fas fa-check")
+          // Buttons Login & Register
           div(class="field is-grouped")
             div(class="buttons is-right")
               a(class="button is-primary modal-register-button" type="submit") 
@@ -51,9 +57,12 @@ mixin registerModal( user = {} )
               a(class="button is-danger modal-close-register") 
                 i(class="fas fa-times")
                 span &nbsp;Cancel
+          // Message
           div(class="message")
+        // Card Footer
         .card-footer.is-right
           p Already Registered ?
           a(class="login-modal-button" href="#") &nbsp;Login
+    // Modal Footer
     .modal-footer            
     button(class="modal-close modal-close-register is-large" aria-label="close") 

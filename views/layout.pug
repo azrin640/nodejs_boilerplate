@@ -37,18 +37,22 @@ html
                   if user    
                     .navbar-end 
                       .navbar-item 
-                        .field.is-grouped
-                          .buttons.has-addons
-                            a(class="button is-danger" href="/logout") 
-                              i(class="fas fa-sign-out-alt") 
-                              span &nbsp;Logout                   
-                            a(class="button is-primary" data-target="modal-profile") 
+                        a(class="button is-danger" href="/logout") 
+                          i(class="fas fa-sign-out-alt") 
+                          span &nbsp;Logout    
+                        div(class="dropdown profile-dropdown-button")         
+                          div(class="dropdown-trigger")
+                            a(class="button is-primary button-profile-modal" data-target="modal-profile" aria-haspopup="true" aria-controls="dropdown-menu") 
                               if user.gravatar
                                 img(class="profile__image" src=`${user.gravatar}`)
                                 span &nbsp;Profile
                               else
                                 i(class="fas fa-user-circle")
                                 span &nbsp;Profile
+                          div(class="dropdown-menu" id="dropdown-menu" role="menu")
+                            div(class="dropdown-content")
+                              a(class="dropdown-item user-profile-link") Profile 
+                              a(class="dropdown-item user-profile-address-link") Address
                   else
                     .navbar-end 
                       .navbar-item 
@@ -71,8 +75,12 @@ html
             // MIXINS START 
             include mixins/_loginModal
             include mixins/_registerModal  
+            include mixins/_profileModal 
+            include mixins/_profileModalAddress 
             +loginModal(user)
             +registerModal(user)  
+            +profileModal(user)
+            +profileModalAddress(user)
             // MIXINS ENDS 
     .content      
       block content                  

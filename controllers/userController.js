@@ -32,7 +32,6 @@ exports.register = async (req, res) => {
   const register = promisify(User.register, User);
   const result = await register(user, req.body.password);
   if(result){
-    console.log(result);
     var respond = {
       success: "An authentication email has been sent to you.",
       status: 200
@@ -45,4 +44,45 @@ exports.register = async (req, res) => {
 
 exports.login = (req, res) => {
   res.render('login', {title: 'Login'});
-}
+};
+
+exports.validateUpdateProfile = (req, res, next) => {
+  req.sanitizeBody('name');
+  req.checkBody('name', 'You must supply a name').notEmpty();
+  req.checkBody('email', 'That email is not valid').isEmail();
+  req.sanitizeBody('email').normalizeEmail({
+      remove_dots: false,
+      remove_extension: false,
+      gmail_remove_subaddress: false
+  });
+  req.checkBody('mobile', 'You must supply a mobile number').notEmpty();
+  req.checkBody('phone', 'You must supply a phone number').notEmpty();
+  console.log(req.body);
+  const errors = req.validationErrors();
+  if(errors) {
+      //res.render('page-register', {title: 'Register Form', body: req.body});
+      return;
+  }
+  next();
+};
+
+exports.updateProfile = async (req, res) => {
+  const result = await User.findOneAndUpdate(
+    {email: req.body.email},
+    {
+      name: req.body.name,
+      email: req.body.email,
+      mobile: req.body.mobile,
+      phone: req.body.phone
+    }
+  );
+  if(result){
+    var respond = {
+      success: "An authentication email has been sent to you.",
+      status: 200
+    }
+    res.json(respond);
+  } else {
+    return;
+  }
+};

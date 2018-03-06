@@ -64,7 +64,7 @@ $(document).ready(function(){
         },
         error: function (xhr, status, error) {
           //console.log(xhr.status);
-          //console.log(xhr.responseText);
+          console.log(xhr.responseText);
           var message = JSON.parse(xhr.responseText);
           $(".message").html(`
             <article class="message is-small is-danger">
@@ -143,4 +143,96 @@ $(document).ready(function(){
     };
   });
   // Login Modal Ends
+
+  // Profile Modal
+  $(".profile-dropdown-button").click(function(){
+    $(".dropdown").toggleClass("is-active");
+  });
+
+  $(".user-profile-link").click(function(){
+    $(".modal-profile").addClass("is-active");
+  });
+
+  $(".modal-profile-form").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 6
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      mobile: {
+        required: true,
+        minlength: 10
+      },
+      phone: {
+        required: true,
+        minlength: 10
+      }
+    },
+    errorClass: "is-danger",
+    validClass: "is-success"
+  });
+
+  $(".modal-profile-button").on('click', function(e){
+    var validator = $(".modal-profile-form").validate();
+    if(validator){
+      var formData = {
+        'name': $('input[name=profile-name]').val(),
+        'email': $('input[name=profile-email]').val(),
+        'mobile': $('input[name=profile-mobile]').val(),
+        'phone': $('input[name=profile-phone]').val()
+      };
+
+      console.log(formData);
+
+      $.ajax({
+        type: "POST",
+        url: "/profile/update",
+        data: formData,
+        dataType: 'json',
+        success: function(result){
+          $(".modal-message").html('Your profile has been updated');
+          $(".modal-profile-form").hide();
+          $(".modal-profile-button").hide();
+          $(".modal-close-profile-button").hide();
+        },
+        error: function (xhr, status, error) {
+          // console.log(xhr.status);
+          //console.log(xhr.responseText);
+          //var message = JSON.parse(xhr.responseText);
+          var message = xhr.responseText;
+          console.log(message);
+          $(".message").html(`
+            <article class="message is-small is-danger">
+              <div class="message-body">
+                ${message.message}
+              </div>
+            </article>`
+          );
+        }
+      });
+    }else{
+      $(".input").addClass("is-danger");
+    }
+    e.preventDefault();
+  });
+
+  $(".modal-close-profile").click(function(){
+    $(".modal-profile").removeClass("is-active");
+  });
+  // Profile Modal Ends
+
+  // Profile Modal Address
+  $(".user-profile-address-link").click(function(){
+    $(".modal-profile-address").addClass("is-active");
+  });
+
+  $(".modal-close-address-profile").click(function(){
+    $(".modal-profile-address").removeClass("is-active");
+  });
+  // Profile Modal Address Ends
+
 });
