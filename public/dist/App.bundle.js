@@ -11624,12 +11624,6 @@ module.exports = function (module) {
 var $ = __webpack_require__(0);
 var validate = __webpack_require__(1);
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then(function () {
-    console.log('Service worker registered');
-  });
-}
-
 $(document).ready(function () {
   $(".navbar-burger").click(function () {
     $(".navbar-menu").toggleClass('is-active');
@@ -11638,6 +11632,18 @@ $(document).ready(function () {
   // Register Modal
   $(".button-registerModal").click(function () {
     $(".modal-register").addClass("is-active");
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function (choiceResult) {
+        console.log(choiceResult.outcome);
+        if (choiceResult.outcome === 'dismissed') {
+          console.log('User cancelled installation');
+        } else {
+          console.log('User addded to Homescreen');
+        }
+      });
+      deferredPrompt = null;
+    }
   });
 
   $(".modal-close-register").click(function () {
@@ -11836,6 +11842,10 @@ $(document).ready(function () {
   });
 
   $(".modal-close-profile").click(function () {
+    $(".modal-profile").removeClass("is-active");
+  });
+
+  $(".modal-close-profile-button").click(function () {
     $(".modal-profile").removeClass("is-active");
   });
   // Profile Modal Ends

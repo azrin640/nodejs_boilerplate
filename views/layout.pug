@@ -3,7 +3,7 @@ html
     title= `${title} | ${h.siteName}`    
     link(rel='stylesheet', href='/bulma/css/bulma.css')     
     link(rel='stylesheet', href='/dist/style.css')  
-    link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+    link(rel="shortcut icon" type="image/png" href="/images/icons/b_192x192.png")
     link(rel="manifest" href="/pwa/manifest.json")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="apple-mobile-web-app-capable" content="yes")
@@ -22,7 +22,7 @@ html
               nav(class="navbar is-transparent")
                 div(class="navbar-brand")
                   a(class="navbar-item") 
-                    img(src="/images/icons/doughnut.png")
+                    img(src="/images/icons/b_192x192.png")
                   div(class="navbar-burger")
                     span
                     span
@@ -91,8 +91,9 @@ html
             // MIXINS ENDS 
     .content      
       block content                  
-    .scripts
+    .scripts      
       block scripts
+        script(src="/pwa/javascripts/app.js")
         script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
         script(src="/dist/App.bundle.js")      
         script(src="/js/jquery.min.js")
