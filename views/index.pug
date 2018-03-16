@@ -1,5 +1,103 @@
-extends layout
-
-block content  
-  // CONTENT 
-  h2(style="text-align: center; padding:10px;") Progressive Web Apps Boilerplate with Service Worker
+html
+  head
+    title= `${title} | ${h.siteName}`    
+    link(rel='stylesheet', href='/bulma/css/bulma.css')     
+    link(rel='stylesheet', href='/dist/style.css')  
+    link(rel="shortcut icon" type="image/png" href="/images/icons/b_192x192.png")
+    link(rel="manifest" href="/pwa/manifest.json")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")  
+    meta(name="apple-mobile-web-app-title" content="Boilerplate")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_48x48.png" sizes="48x48")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_256x256.png" sizes="256x256")
+    link(rel="apple-touch-icon" href="/images/icons/apple-icon-b_512x512.png" sizes="512x512")  
+  body   
+    .header
+      block header 
+        // HERO START
+        section(class="hero is-dark is-fullheight")          
+            div(class="hero-head")
+              nav(class="navbar is-transparent")
+                div(class="container")
+                  div(class="navbar-brand")
+                    a(class="navbar-item") 
+                      img(src="/images/icons/b_192x192.png")
+                    div(class="navbar-burger")
+                      span
+                      span
+                      span
+                  div(class="navbar-menu")
+                    div(class="navbar-start")
+                      a(class="navbar-item" href="/") 
+                        i(class="fas fa-home")
+                        span &nbsp;Home
+                      a(class="navbar-item" href="#")
+                        i(class="fas fa-gift") 
+                        span &nbsp;Services
+                      a(class="navbar-item" href="#") 
+                        i(class="fas fa-coffee")
+                        span &nbsp;Blogs
+                      a(class="navbar-item" href="/contact") 
+                        i(class="fas fa-envelope")
+                        span &nbsp;Contact
+                    if user    
+                      .navbar-end 
+                        .navbar-item 
+                          a(class="button is-danger" href="/logout") 
+                            i(class="fas fa-sign-out-alt") 
+                            span &nbsp;Logout    
+                          div(class="dropdown profile-dropdown-button")         
+                            div(class="dropdown-trigger")
+                              a(class="button is-primary button-profile-modal" data-target="modal-profile" aria-haspopup="true" aria-controls="dropdown-menu") 
+                                if user.gravatar
+                                  img(class="profile__image" src=`${user.gravatar}`)
+                                  span &nbsp;Profile
+                                else
+                                  i(class="fas fa-user-circle")
+                                  span &nbsp;Profile
+                            div(class="dropdown-menu" id="dropdown-menu" role="menu")
+                              div(class="dropdown-content")
+                                a(class="dropdown-item user-profile-link") Profile 
+                                a(class="dropdown-item user-profile-address-link") Address
+                    else
+                      .navbar-end 
+                        .navbar-item 
+                          .field.is-grouped
+                            .buttons.has-addons
+                              a(class="button is-primary button-loginModal" data-target="modal-login") 
+                                i(class="fas fa-sign-in-alt") 
+                                span &nbsp;Login                    
+                              a(class="button is-danger button-registerModal" data-target="modal-register") 
+                                i(class="fas fa-user-plus")
+                                span &nbsp;Register 
+                        
+            div(class="hero-body")   
+              div(class="container has-text-centered")
+                h1(class="title") Title
+                h3(class="subtitle") Subtitle
+            div(class="hero-foot")            
+            // HERO ENDS     
+            
+            // MIXINS START 
+            include mixins/_loginModal
+            include mixins/_registerModal  
+            include mixins/_profileModal 
+            include mixins/_profileModalAddress 
+            +loginModal(user)
+            +registerModal(user)  
+            +profileModal(user)
+            +profileModalAddress(user)
+            // MIXINS ENDS 
+    .content      
+      block content                  
+    .scripts      
+      block scripts
+        script(src="/pwa/javascripts/app.js")
+        script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+        script(src="/dist/App.bundle.js")      
+        script(src="/js/jquery.min.js")
+        script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js")
+        
+    
+  

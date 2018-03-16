@@ -16,7 +16,7 @@ html
     .header
       block header 
         // HERO START
-        section(class="hero is-dark is-fullheight")          
+        section(class="hero is-dark")          
             div(class="hero-head")
               nav(class="navbar is-transparent")
                 div(class="container")
@@ -38,8 +38,8 @@ html
                       a(class="navbar-item" href="#") 
                         i(class="fas fa-coffee")
                         span &nbsp;Blogs
-                      a.navbar-item 
-                        i(class="fas fa-envelope" href="/contact")
+                      a(class="navbar-item" href="/contact") 
+                        i(class="fas fa-envelope")
                         span &nbsp;Contact
                     if user    
                       .navbar-end 
