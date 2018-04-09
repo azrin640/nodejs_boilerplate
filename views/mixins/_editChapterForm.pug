@@ -1,0 +1,20 @@
+mixin editChapterForm(chapter = {})
+
+  form(class="bookform" action=`/admin/edit-bab/${chapter._id}` method="POST")
+    .field
+      .control 
+        input(class="input is-normal" type="number" name="number" value=chapter.number)
+    .field
+      .control 
+        input(class="input is-normal" type="text" name="title" value=chapter && chapter.title)
+    .field
+      .control
+        textarea(class="textarea is-normal" type="text" name="text")=chapter && chapter.text
+    .field
+      .control 
+        input(class="input is-normal" type="text" name="tags" placeholder="tags" value=chapter.tags)
+    input(type="hidden" name="author" value=user._id)
+    input(type="hidden" name="chapter" value=chapter._id)
+    .field
+      .control 
+        button(class="button is-primary bookform__submit" type="submit") Simpan Bab

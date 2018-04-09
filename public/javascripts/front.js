@@ -1,9 +1,11 @@
-//import '../sass/style.scss';
+import '../sass/style.scss';
 //import { $, $$ } from './modules/bling';
 const $ = require('jquery');
 const validate = require('jquery-validation');
+import './modules/turnjs/turn.js';
 
 $(document).ready(function(){
+
   $(".navbar-burger").click(function(){
     $(".navbar-menu").toggleClass('is-active');
   });
@@ -46,7 +48,7 @@ $(document).ready(function(){
       password_repeat: {
         required: true,
         minlength: 8,
-        equalTo: password
+        equalTo: "#password"
       }
     },
     errorClass: "is-danger",
@@ -182,6 +184,9 @@ $(document).ready(function(){
       phone: {
         required: true,
         minlength: 10
+      },
+      facebook: {
+        required: true
       }
     },
     errorClass: "is-danger",
@@ -195,7 +200,8 @@ $(document).ready(function(){
         'name': $('input[name=profile-name]').val(),
         'email': $('input[name=profile-email]').val(),
         'mobile': $('input[name=profile-mobile]').val(),
-        'phone': $('input[name=profile-phone]').val()
+        'phone': $('input[name=profile-phone]').val(),
+        'facebook': $('input[name=profile-facebook]').val()
       };
 
       console.log(formData);
@@ -241,13 +247,67 @@ $(document).ready(function(){
   });
   // Profile Modal Ends
 
-  // Profile Modal Address
-  $(".user-profile-address-link").click(function(){
-    $(".modal-profile-address").addClass("is-active");
+  // Facebook Modal
+  $(".user-profile-facebook-link").click(function(){
+    $(".modal-facebook").addClass("is-active");
   });
 
-  $(".modal-close-address-profile").click(function(){
-    $(".modal-profile-address").removeClass("is-active");
+  $(".modal-close-facebook").click(function(){
+    $(".modal-facebook").removeClass("is-active");
   });
-  // Profile Modal Address Ends
+
+  $(".modal-facebook-button").on('click', function(e){
+    var validator = $(".modal-facebook-form").validate();
+    if(validator){
+      var formData = {
+        'id': $('input[name=id]').val(),
+        'facebook': $('input[name=profile-facebook]').val()
+      };
+
+      $.ajax({
+        type: "POST",
+        url: "/facebook/update",
+        data: formData,
+        dataType: 'json',
+        success: function(result){
+          $(".modal-message").html('Your facebook profile has been updated');
+          $(".modal-facebook-form").hide();
+          $(".modal-facebook-button").hide();
+          $(".modal-facebook-button").hide();
+        },
+        error: function (xhr, status, error) {
+          // console.log(xhr.status);
+          //console.log(xhr.responseText);
+          //var message = JSON.parse(xhr.responseText);
+          var message = xhr.responseText;
+          console.log(message);
+          $(".message").html(`
+            <article class="message is-small is-danger">
+              <div class="message-body">
+                ${message.message}
+              </div>
+            </article>`
+          );
+        }
+      });
+    }else{
+      $(".input").addClass("is-danger");
+    }
+    e.preventDefault();
+  });
+
+  $(".flipbook").turn({
+    gradients: true,
+    autoCenter: true
+
+  });
+
+  $(".flipbookNext").click(function(){
+    $(".flipbook").turn("next");
+  });
+
+  $(".flipbookPrevious").click(function(){
+    $(".flipbook").turn("previous");
+  });
+
 });

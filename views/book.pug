@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  .inner
+    h2=title
+    .card
+      .card-content
+        .columns
+          .column.is-one-quarter
+            img(src=`/uploads/${book.photo}`)
+          .column.is-three-quarter
+            form(class="form" action=`/admin/buku/${book._id}` method="POST")
+              .field
+                .control 
+                  label Tajuk
+                  input(class="input is-normal form__input" name="title" value=`${book.title}`)
+              .field
+                .control 
+                  label Sub Tajuk
+                  input(class="input is-normal form__input" name="subtitle" value=`${book.subtitle}`)
+              .field
+                .control 
+                  label Sinopsis
+                  textarea(class="textarea form__textarea" name="synopsis")=book.synopsis
+              .field
+                .control 
+                  label Tags 
+                  input(class="input is-normal form__input" name="tags" value=`${book.tags}`)
+              button(class="button is-warning form__button" type="submit") Simpan Buku
+              a(class="button is-danger form__button" href=`/admin/padam-buku/${book._id}`) Padam
+    .card
+      .card-content
+        a(href=`/admin/daftar-bab/${book._id}`)
+          button(class="button is-primary form__button" type="submit") Tambah Bab  
+        table.table
+          thead
+            tr
+              th Bab 
+              th Tajuk
+              th Edit Bab
+              th Padam Bab
+          tbody           
+            each chapter in book.chapters
+              tr
+                td=chapter.number 
+                td=chapter.title
+                td
+                  a(href=`/admin/edit-bab/${chapter._id}`)
+                    span(class="icon has-text-warning")
+                      i(class="fas fa-pen-square")
+                td
+                  a(href=`/admin/padam-bab/${chapter._id}`)
+                    span(class="icon has-text-danger")
+                      i(class="fas fa-times-circle")               

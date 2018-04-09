@@ -86,3 +86,21 @@ exports.updateProfile = async (req, res) => {
     return;
   }
 };
+
+exports.facebookProfile = async (req, res) => {
+  const _id = req.body.id;
+  const facebook = req.body.facebook;
+  const result = await User.findOneAndUpdate(
+    {_id},
+    {facebook}
+  );
+  if(result){
+    var respond = {
+      success: "An authentication email has been sent to you.",
+      status: 200
+    }
+    res.json(respond);
+  } else {
+    return;
+  }
+};

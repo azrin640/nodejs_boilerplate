@@ -52,6 +52,7 @@ const config = {
     // we only have 1 entry, but I've set it up for multiple in the future
     App: './public/javascripts/front.js'
   },
+  
   // we're using sourcemaps and here is where we specify which kind of sourcemap to use
   devtool: 'source-map',
   // Once things are done, we kick it out to a file.

@@ -1,0 +1,29 @@
+.flipbook-container{
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.flipbook{
+  height: 100%;
+  position: relative;
+  padding-bottom: 10px;
+
+  &__text{
+    white-space: pre-wrap;
+    white-space: normal;
+    word-break:break-all;
+  }
+
+  &__menu{
+    padding-top: 10px;
+  }
+}
+
+.flipbook .page{
+  width: 90%;
+  padding: 10px;
+  background-color: #fffdf6;
+
+}

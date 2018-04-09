@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  .inner 
+    h2=title 
+    .card
+      .card-content
+        .columns
+          .column.is-one-quarter
+            img(src=`/uploads/${book.photo}`)
+          .column.is-one-quarter
+            .tile.is-parent
+              article.tile.is-child.notification.is-info
+                p.title Penulis
+                figure.image.is-128x128
+                  img(class="profile__image" src=`${book.author.gravatar}`)
+                p
+                  span.icon 
+                    i.fas.fa-user-circle
+                  span=book.author.name
+                  br
+                  span.icon 
+                    i.fab.fa-facebook-square
+                  a(href=`https://facebook.com/${book.author.facebook}` target="0") 
+                    span=book.author.facebook 
+                  br
+                  span.icon 
+                    i.fas.fa-star     
+          .column.is-half           
+            form.form 
+              .field
+                .control 
+                  label Tajuk
+                  input(class="input is-normal form__input" value=`${book.title}` disabled)
+              .field
+                .control 
+                  label Sub Tajuk
+                  input(class="input is-normal form__input" value=`${book.subtitle}` disabled)
+              .field
+                .control 
+                  label Sinopsis
+                  textarea(class="textarea form__textarea" readonly)=book.synopsis
+              -var tags=book.tags.split(' ')
+              each tag in tags
+                if tag 
+                  -newTag= tag.split('').slice(1).join('')
+                  a(href=`/tags/${newTag}`)
+                    span(class="tag is-danger form__tag")=tag
+                
+                
+    .card
+      .card-content
+        table.table
+          thead
+            tr
+              th Bab 
+              th Tajuk
+              th Baca
+          tbody           
+            each chapter in book.chapters
+              tr
+                td=chapter.number 
+                td=chapter.title
+                td
+                  p.field 
+                    a(class="button is-info" href=`/bab/${chapter._id}`)
+                      span.icon 
+                        i.fas.fa-book
+                      span Baca Bab #{chapter.number}
+      

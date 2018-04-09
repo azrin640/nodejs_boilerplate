@@ -3,7 +3,7 @@ html
     title= `${title} | ${h.siteName}`    
     link(rel='stylesheet', href='/bulma/css/bulma.css')     
     link(rel='stylesheet', href='/dist/style.css')  
-    link(rel="shortcut icon" type="image/png" href="/images/icons/b_192x192.png")
+    link(rel="shortcut icon" type="image/png" href="/images/icons/p_512.png")
     link(rel="manifest" href="/pwa/manifest.json")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="apple-mobile-web-app-capable" content="yes")
@@ -22,7 +22,7 @@ html
                 div(class="container")
                   div(class="navbar-brand")
                     a(class="navbar-item") 
-                      img(src="/images/icons/b_192x192.png")
+                      img(src="/images/icons/p_512.png")
                     div(class="navbar-burger")
                       span
                       span
@@ -31,16 +31,16 @@ html
                     div(class="navbar-start")
                       a(class="navbar-item" href="/") 
                         i(class="fas fa-home")
-                        span &nbsp;Home
-                      a(class="navbar-item" href="#")
+                        span &nbsp;Utama
+                      a(class="navbar-item" href="/buku-buku")
                         i(class="fas fa-gift") 
-                        span &nbsp;Services
+                        span &nbsp;Buku Buku
                       a(class="navbar-item" href="#") 
                         i(class="fas fa-coffee")
-                        span &nbsp;Blogs
+                        span &nbsp;Blog
                       a(class="navbar-item" href="/contact") 
                         i(class="fas fa-envelope")
-                        span &nbsp;Contact
+                        span &nbsp;Hubungi
                     if user    
                       .navbar-end 
                         .navbar-item 
@@ -59,7 +59,8 @@ html
                             div(class="dropdown-menu" id="dropdown-menu" role="menu")
                               div(class="dropdown-content")
                                 a(class="dropdown-item user-profile-link") Profile 
-                                a(class="dropdown-item user-profile-address-link") Address
+                                a(class="dropdown-item user-profile-address-link" href="/admin") Admin 
+                                a(class="dropdown-item user-profile-facebook-link") Facebook
                     else
                       .navbar-end 
                         .navbar-item 
@@ -74,8 +75,8 @@ html
                         
             div(class="hero-body")   
               div(class="container has-text-centered")
-                h1(class="title") Title
-                h3(class="subtitle") Subtitle
+                h1(class="title") Penulisan2u
+                h3(class="subtitle") Portal Novel Bahasa Malaysia 
             div(class="hero-foot")            
             // HERO ENDS     
             
@@ -84,10 +85,12 @@ html
             include mixins/_registerModal  
             include mixins/_profileModal 
             include mixins/_profileModalAddress 
+            include mixins/_facebookModal
             +loginModal(user)
             +registerModal(user)  
             +profileModal(user)
             +profileModalAddress(user)
+            +facebookModal(user)
             // MIXINS ENDS 
     .content      
       block content                  

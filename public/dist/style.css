@@ -1,5 +1,8 @@
 body {
-  color: #fff; }
+  background-color: #eee; }
+
+p {
+  white-space: pre-wrap; }
 
 .card {
   padding: 10px; }
@@ -8,6 +11,71 @@ body {
   padding: 10px; }
 
 .profile__image {
+  display: block;
+  margin: auto;
   border-radius: 100px; }
+
+.inner {
+  padding: 10px;
+  background-color: #eee;
+  margin: 10px; }
+
+.bookform {
+  padding: 10px; }
+  .bookform__file {
+    padding-bottom: 10px; }
+
+.bookscard {
+  display: block;
+  margin: auto; }
+  .bookscard__profile {
+    border-radius: 100%; }
+  .bookscard__column {
+    margin: 0px;
+    padding: 0px; }
+  .bookscard__image {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 250px; }
+
+.form {
+  padding: 10px;
+  font-size: 0.75rem; }
+  .form__input {
+    width: 100%; }
+  .form__textarea {
+    width: 100%; }
+  .form__button {
+    width: 100%;
+    margin-bottom: 10px; }
+  .form__tag {
+    margin-right: 10px; }
+  .form__addBookButton {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px; }
+
+.flipbook-container {
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  height: 100%; }
+
+.flipbook {
+  height: 100%;
+  position: relative;
+  padding-bottom: 10px; }
+  .flipbook__text {
+    white-space: pre-wrap;
+    white-space: normal;
+    word-break: break-all; }
+  .flipbook__menu {
+    padding-top: 10px; }
+
+.flipbook .page {
+  width: 90%;
+  padding: 10px;
+  background-color: #fffdf6; }
 
 /*# sourceMappingURL=style.css.map*/

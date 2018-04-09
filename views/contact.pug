@@ -1,6 +1,29 @@
 extends layout
 
 block content
-  h2 Hello
-  
-  
+  .inner
+    h2=title    
+    .card
+      .card-header
+      .card-content
+        form(action="/contact" method="POST")
+          .field
+            .label Nama
+            .control(class="has-icons-left has-icons-right")
+              input(class="input" name="name" type="text" )
+              span(class="icon is-small is-left")
+                i(class="fas fa-user")
+          .field
+            .label Email
+              .control(class="has-icons-left has-icons-right")
+                input(class="input" name="email" type="email" )
+                span(class="icon is-small is-left")
+                  i(class="far fa-envelope")
+          .field
+            .label No Handphone
+              .control(class="has-icons-left has-icons-right")
+                input(class="input" name="mobile" type="number" )
+                span(class="icon is-small is-left")
+                  i(class="fas fa-mobile-alt")          
+          button(class="button is-primary form__button" type="submit") Hantar
+          

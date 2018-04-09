@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .inner
+    h1 Bab  #{chapter.number} :  #{chapter.title} 
+    .field
+      .control   
+        textarea(class="textarea" type="text" rows="20" readonly)=chapter.text 
+  
+  

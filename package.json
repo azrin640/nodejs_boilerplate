@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "penulisan",
   "version": "0.0.1",
   "private": true,
   "engines": {
@@ -16,6 +16,7 @@
   },
   "browserslist": "last 3 versions",
   "dependencies": {
+    "ascii-string-split": "^1.0.0",
     "axios": "0.15.3",
     "body-parser": "1.17.1",
     "bulma": "^0.6.2",
@@ -31,6 +32,7 @@
     "express-session": "1.15.1",
     "express-validator": "3.1.2",
     "faker": "4.1.0",
+    "flip-book": "^1.7.0",
     "font-awesome": "^4.7.0",
     "forever": "0.15.3",
     "glob": "7.1.1",
@@ -52,6 +54,7 @@
     "pug": "2.0.0-beta6",
     "slick": "^1.12.2",
     "slugs": "0.1.3",
+    "turn.js": "^1.0.5",
     "uuid": "3.0.1",
     "validator": "7.0.0"
   },
@@ -73,5 +76,13 @@
   "description": "Just you wait folks!",
   "main": "app.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azrin640/nodejs_boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azrin640/nodejs_boilerplate/issues"
+  },
+  "homepage": "https://github.com/azrin640/nodejs_boilerplate#readme"
 }

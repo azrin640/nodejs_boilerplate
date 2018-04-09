@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  .inner
+    h2=title
+    .columns.is-multiline
+      each book in books
+        div(class="column bookscard__card is-one-quarter")                      
+          div(class="card")
+            div(class="card-image")
+              a(href=`/buku/${book._id}`)
+                img(class="bookscard__image is-1by1" src=`/uploads/${book.photo}`)
+            .card-content
+              .media
+                .media-left
+                  img(class="image is-48x48 bookscard__profile" src=`${book.author.gravatar}`)
+                .media-content 
+                  span.icon.has-text-success
+                    i(class="fas fa-user-circle") 
+                  span=book.author.name
+                  br
+                  span.icon.has-text-info
+                    i(class="fab fa-facebook-square") 
+                  span 
+                    a(href=`https://facebook.com/${book.author.facebook}` target="0") 
+                      span #{book.author.facebook}
+                  br
+                  span.icon.has-text-warning
+                    i(class="fas fa-book")
+                  span=book.title
+                  br
+                  span.icon.has-text-danger
+                    i(class="fas fa-file-alt")
+                  span=book.synopsis.split(' ').slice(0, 10).join(' ')
+                    a(href=`/buku/${book._id}`) &nbsp; ... Baca Lagi
+                      

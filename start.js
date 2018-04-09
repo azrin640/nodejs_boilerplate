@@ -20,8 +20,9 @@ mongoose.connection.on('error', (err) => {
 // READY?! Let's go!
 // Import db model
 require('./models/User');
-
-
+require('./models/Book');
+require('./models/Chapter');
+require('./models/Contact');
 // Start our app!
 const app = require('./app');
 app.set('port', process.env.PORT || 7777);

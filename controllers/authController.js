@@ -39,5 +39,5 @@ exports.isLoggedIn = (req, res, next) => {
     next();
     return;
   };
-  req.redirect('/');
+  res.redirect('/');
 }

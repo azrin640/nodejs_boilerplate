@@ -1,0 +1,20 @@
+mixin registerChapterForm(book = {})
+
+  form(class="bookform" action="/admin/daftar-bab/${book}" method="POST")
+    .field
+      .control 
+        input(class="input is-normal" type="number" name="number" placeholder="No Bab")
+    .field
+      .control 
+        input(class="input is-normal" type="text" name="title" placeholder="Tajuk Bab")
+    .field
+      .control
+        textarea(class="textarea is-normal" type="text" name="text" placeholder="Masukkan teks anda disini ...")
+    .field
+      .control 
+        input(class="input is-normal" type="text" name="tags" placeholder="tags")
+    input(type="hidden" name="author" value=user._id)
+    input(type="hidden" name="book" value=book)
+    .field
+      .control 
+        button(class="button is-primary bookform__submit" type="submit") Simpan Bab
