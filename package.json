@@ -17,7 +17,7 @@
   "browserslist": "last 3 versions",
   "dependencies": {
     "ascii-string-split": "^1.0.0",
-    "axios": "0.15.3",
+    "axios": "0.21.1",
     "body-parser": "1.17.1",
     "bulma": "^0.6.2",
     "bulma-start": "0.0.2",
